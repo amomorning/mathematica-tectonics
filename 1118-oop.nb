@@ -1,0 +1,387 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     15754,        379]
+NotebookOptionsPosition[     14499,        352]
+NotebookOutlinePosition[     14878,        368]
+CellTagsIndexPosition[     14835,        365]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "nil", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"SetAttributes", "[", 
+     RowBox[{"nil", ",", "ReadProtected"}], "]"}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"nil", "[", "___", "]"}], "=", "nil"}], ";"}], 
+   RowBox[{"(*", "default", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", "new", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"SetAttributes", "[", 
+     RowBox[{"new", ",", 
+      RowBox[{"{", 
+       RowBox[{"ReadProtected", ",", "HoldFirst"}], "}"}]}], "]"}], ";"}], 
+   "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"new", "[", "nil", "]"}], "=", "nil"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\n", 
+   RowBox[{"(*", 
+    RowBox[{"type", " ", "of"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"SetAttributes", "[", 
+     RowBox[{"typeOf", ",", "ReadProtected"}], "]"}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"typeOf", "[", "obj_", "]"}], ":=", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Evaluate", "[", 
+         RowBox[{"obj", "@", "type"}], "]"}], "===", "nil"}], ",", "nil", ",", 
+       RowBox[{"obj", "@", "type"}], ",", 
+       RowBox[{"Head", "[", "obj", "]"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+    "to", " ", "make", " ", "sure", " ", "every", " ", "expression", " ", 
+     "has", " ", "a", " ", "type"}], "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", "classQ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"SetAttributes", "[", 
+     RowBox[{"classQ", ",", "ReadProtected"}], "]"}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"classQ", "[", "obj_", "]"}], ":=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"typeOf", "[", "obj", "]"}], "\[Equal]", "class"}], "||", 
+      RowBox[{
+       RowBox[{"typeOf", "[", "obj", "]"}], "\[Equal]", "nil"}]}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"nil", " ", "is", " ", "a", " ", "special", " ", "class"}], 
+    "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", "class", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"SetAttributes", "[", 
+     RowBox[{"class", ",", 
+      RowBox[{"{", 
+       RowBox[{"ReadProtected", ",", "HoldAll"}], "}"}]}], "]"}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"class", "[", 
+      RowBox[{"identifier_Symbol", ",", 
+       RowBox[{"{", "privDecls___Symbol", "}"}], ",", "body_"}], "]"}], ":=", 
+     "\[IndentingNewLine]", 
+     RowBox[{"class", "[", 
+      RowBox[{"identifier", ",", "nil", ",", 
+       RowBox[{"{", "privDecls", "}"}], ",", "body"}], "]"}]}], ";"}], "\n", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"class", "[", 
+     RowBox[{"identifier_Symbol", ",", 
+      RowBox[{"baseClass_", "?", "classQ"}], ",", 
+      RowBox[{"{", "privDecls___Symbol", "}"}], ",", "body_"}], "]"}], ":=", 
+    RowBox[{"With", "[", 
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"className", "=", 
+         RowBox[{"SymbolName", "[", "identifier", "]"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"upperClassName", "=", 
+         RowBox[{"StringReplace", "[", 
+          RowBox[{
+           RowBox[{"SymbolName", "[", "identifier", "]"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"StartOfString", "~~", "h_"}], "\[RuleDelayed]", 
+            RowBox[{"ToUpperCase", "[", "h", "]"}]}]}], "]"}]}]}], "}"}], ",",
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", "type", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"SetAttributes", "[", 
+        RowBox[{"identifier", ",", 
+         RowBox[{"{", 
+          RowBox[{"ReadProtected", ",", "HoldAll"}], "}"}]}], "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"identifier", "@", "type"}], "=", "class"}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{"'", 
+         RowBox[{"type", "'"}], "Q"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"SetAttributes", "[", 
+        RowBox[{
+         RowBox[{"Evaluate", "[", 
+          RowBox[{"Symbol", "[", 
+           RowBox[{"className", "<>", "\"\<Q\>\""}], "]"}], "]"}], ",", 
+         "ReadProtected"}], "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Evaluate", "[", 
+          RowBox[{"Symbol", "[", 
+           RowBox[{"className", "<>", "\"\<Q\>\""}], "]"}], "]"}], "[", 
+         "obj_", "]"}], ":=", 
+        RowBox[{"If", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"obj", "[", 
+           RowBox[{"Evaluate", "[", 
+            RowBox[{"Symbol", "[", 
+             RowBox[{"\"\<is\>\"", "<>", "upperClassName"}], "]"}], "]"}], 
+           "]"}], ",", "True", ",", "False", ",", "False"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"(*", "constructor", "*)"}], "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"new", "[", "identifier", "]"}], ":=", 
+        RowBox[{"Module", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"$self", ",", "$base", ",", "privDecl"}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"SetAttributes", "[", 
+            RowBox[{"$self", ",", 
+             RowBox[{"{", 
+              RowBox[{"HoldAll", ",", "ReadProtected"}], "}"}]}], "]"}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"SetAttributes", "[", 
+            RowBox[{"$base", ",", "ReadProtected"}], "]"}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"SetAttributes", "[", 
+              RowBox[{"#", ",", "ReadProtected"}], "]"}], "&"}], "/@", 
+            RowBox[{"{", "privDecl", "}"}]}], ";", 
+           RowBox[{"(*", "encapsulation", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{"$base", "=", 
+            RowBox[{"new", "[", "baseClass", "]"}]}], ";", 
+           RowBox[{"(*", "inheritance", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"$self", "[", "mem_", "]"}], ":=", 
+            RowBox[{"$base", "@", "mem"}]}], ";", 
+           RowBox[{"(*", "polymorphism", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"$self", "@", "type"}], "=", "identifier"}], ";", 
+           RowBox[{"(*", "type", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"$self", "[", 
+             RowBox[{"Evaluate", "[", 
+              RowBox[{"Symbol", "[", 
+               RowBox[{"\"\<is\>\"", "<>", "upperClassName"}], "]"}], "]"}], 
+             "]"}], "=", "True"}], ";", 
+           RowBox[{"(*", "subtyping", "*)"}], "\[IndentingNewLine]", 
+           "\[IndentingNewLine]", 
+           RowBox[{"(*", "body", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{"ReleaseHold", "[", 
+            RowBox[{
+             RowBox[{"Hold", "[", "body", "]"}], "/.", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"self", "\[Rule]", "$self"}], ",", 
+               RowBox[{"base", "\[Rule]", "$base"}], ",", 
+               RowBox[{"public", "\[Rule]", "$self"}]}], "}"}]}], "]"}], ";", 
+           "\[IndentingNewLine]", "$self"}]}], 
+         RowBox[{"(*", 
+          RowBox[{"reference", " ", "semantics"}], "*)"}], 
+         "\[IndentingNewLine]", "]"}]}], ";"}]}], "\[IndentingNewLine]", 
+     "]"}]}], "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.8146952408041697`*^9, 3.81469524080916*^9}, {
+   3.81469529588585*^9, 3.8146955562342463`*^9}, {3.814695689075656*^9, 
+   3.8146956910770216`*^9}, {3.814696771905053*^9, 3.8146967736853633`*^9}, {
+   3.8146968169300065`*^9, 3.8146968636839027`*^9}, 3.814697004171303*^9, {
+   3.8146972603104043`*^9, 3.814697266379567*^9}},
+ CellLabel->
+  "In[299]:=",ExpressionUUID->"b099122a-fe3c-4a78-bf5d-9e182641599e"],
+
+Cell[BoxData[
+ RowBox[{"class", "[", 
+  RowBox[{"testBase", ",", 
+   RowBox[{"{", "text", "}"}], ",", 
+   RowBox[{"(*", "initialize", "*)"}], 
+   RowBox[{
+    RowBox[{"text", "=", "\"\<Base\>\""}], ";", "\[IndentingNewLine]", 
+    RowBox[{"(*", 
+     RowBox[{"public", " ", "method"}], "*)"}], 
+    RowBox[{
+     RowBox[{"public", "@", 
+      RowBox[{"setText", "[", "str_String", "]"}]}], ":=", 
+     RowBox[{"(", 
+      RowBox[{"text", "=", "str"}], ")"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"public", "@", 
+      RowBox[{"getText", "[", "]"}]}], ":=", "text"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"public", "@", 
+      RowBox[{"print", "[", "]"}]}], ":=", 
+     RowBox[{"Print", "[", 
+      RowBox[{"\"\<This is base. The text is \>\"", "<>", "text"}], 
+      "]"}]}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.8146952874932685`*^9, 3.814695287496271*^9}, {
+   3.8146955646944714`*^9, 3.8146956276357846`*^9}, {3.814695715125123*^9, 
+   3.814695763950857*^9}, {3.8146958527590685`*^9, 3.8146959064847307`*^9}, {
+   3.814695956509512*^9, 3.8146959623657494`*^9}, {3.814696473030287*^9, 
+   3.8146964781832542`*^9}, {3.814696592977971*^9, 3.81469659879191*^9}, {
+   3.814696666123553*^9, 3.8146966819448977`*^9}, {3.814696736276372*^9, 
+   3.8146967406105475`*^9}, {3.8146970113198657`*^9, 3.814697015878872*^9}, 
+   3.8146972297441316`*^9},
+ CellLabel->
+  "In[310]:=",ExpressionUUID->"462069f7-b369-41d1-a4fd-a6b0541413f9"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"obj1", " ", "=", " ", 
+   RowBox[{"new", "[", "testBase", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"obj1", "@", 
+  RowBox[{"getText", "[", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"obj1", "@", 
+  RowBox[{"setText", "[", "\"\<Hello\>\"", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"obj1", "@", 
+  RowBox[{"print", "[", "]"}]}]}], "Input",
+ CellChangeTimes->{{3.8146957290921154`*^9, 3.8146957457404995`*^9}, {
+  3.8146958374668317`*^9, 3.814695916650071*^9}, {3.8146959689310727`*^9, 
+  3.8146959995391364`*^9}, {3.8146965111818986`*^9, 3.8146965227815037`*^9}, {
+  3.814696607868739*^9, 3.814696610742176*^9}, {3.814696689047207*^9, 
+  3.814696691242241*^9}, {3.8146970256559224`*^9, 3.8146970300287*^9}},
+ CellLabel->
+  "In[311]:=",ExpressionUUID->"49787439-a09d-43a0-8125-cdb724422744"],
+
+Cell[BoxData["\<\"Base\"\>"], "Output",
+ CellChangeTimes->{
+  3.8146965433888264`*^9, {3.814696603299121*^9, 3.8146966118755417`*^9}, 
+   3.8146966927562246`*^9, 3.8146967505586867`*^9, 3.8146967834578114`*^9, 
+   3.8146968361736703`*^9, {3.814697022018985*^9, 3.8146970318001337`*^9}, 
+   3.814697062542753*^9, 3.814697129361972*^9, 3.814697171647915*^9, 
+   3.81469723264765*^9, 3.814697270888031*^9},
+ CellLabel->
+  "Out[312]=",ExpressionUUID->"94ba1327-bebd-4400-b1ed-494227c42f33"],
+
+Cell[BoxData["\<\"Hello\"\>"], "Output",
+ CellChangeTimes->{
+  3.8146965433888264`*^9, {3.814696603299121*^9, 3.8146966118755417`*^9}, 
+   3.8146966927562246`*^9, 3.8146967505586867`*^9, 3.8146967834578114`*^9, 
+   3.8146968361736703`*^9, {3.814697022018985*^9, 3.8146970318001337`*^9}, 
+   3.814697062542753*^9, 3.814697129361972*^9, 3.814697171647915*^9, 
+   3.81469723264765*^9, 3.8146972708920565`*^9},
+ CellLabel->
+  "Out[313]=",ExpressionUUID->"296d9a6f-d191-4b56-9347-db165875e899"],
+
+Cell[BoxData["\<\"This is base. The text is Hello\"\>"], "Print",
+ CellChangeTimes->{3.8146970318121347`*^9, 3.814697062549753*^9, 
+  3.814697129371969*^9, 3.814697171658929*^9, 3.8146972326536503`*^9, 
+  3.8146972709000425`*^9},
+ CellLabel->
+  "During evaluation of \
+In[311]:=",ExpressionUUID->"1c07dfc2-d71d-4f46-aee9-5f60a2225e51"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"class", "[", 
+  RowBox[{"testDerived", ",", "testBase", ",", 
+   RowBox[{"{", "}"}], ",", 
+   RowBox[{
+    RowBox[{"public", "@", 
+     RowBox[{"print", "[", "]"}]}], ":=", 
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<This is derived. The text is \>\"", "<>", 
+      RowBox[{"self", "@", 
+       RowBox[{"getText", "[", "]"}]}]}], "]"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.8146961225702295`*^9, 3.814696174436395*^9}, {
+   3.8146962664525075`*^9, 3.8146962742770224`*^9}, 3.8146966176080484`*^9, {
+   3.8146966478551598`*^9, 3.8146966574438286`*^9}, 3.814697200778387*^9},
+ CellLabel->
+  "In[318]:=",ExpressionUUID->"693b0d4f-1d70-43cb-9d00-39ce7f860d4b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"obj2", "=", 
+   RowBox[{"new", "[", "testDerived", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"obj2", "@", 
+  RowBox[{"setText", "[", "\"\<World\>\"", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"obj2", "@", 
+  RowBox[{"print", "[", "]"}]}]}], "Input",
+ CellChangeTimes->{{3.814696186884657*^9, 3.8146962588935766`*^9}, {
+   3.8146965649975505`*^9, 3.814696569212207*^9}, {3.814696622740739*^9, 
+   3.814696624027198*^9}, {3.8146967052848206`*^9, 3.814696711107354*^9}, 
+   3.814697040745103*^9, {3.8146970723351316`*^9, 3.814697093798492*^9}, {
+   3.8146972093231115`*^9, 3.8146972223707557`*^9}},
+ CellLabel->
+  "In[319]:=",ExpressionUUID->"d2650a85-4acb-4a6e-b7e0-611cbcd49472"],
+
+Cell[BoxData["\<\"World\"\>"], "Output",
+ CellChangeTimes->{
+  3.8146967118604302`*^9, 3.814696790385071*^9, {3.814697038503558*^9, 
+   3.8146970942729716`*^9}, 3.814697131253503*^9, 3.814697174998762*^9, {
+   3.814697205603609*^9, 3.814697238189048*^9}, {3.814697273110471*^9, 
+   3.8146972774697757`*^9}},
+ CellLabel->
+  "Out[320]=",ExpressionUUID->"a9e3bc8d-cee0-4d21-807b-183509077c9b"],
+
+Cell[BoxData["\<\"This is derived. The text is World\"\>"], "Print",
+ CellChangeTimes->{
+  3.814697094305235*^9, 3.8146971312759132`*^9, 3.814697175019763*^9, {
+   3.8146972056236086`*^9, 3.8146972382060165`*^9}, {3.8146972731264377`*^9, 
+   3.8146972774737396`*^9}},
+ CellLabel->
+  "During evaluation of \
+In[319]:=",ExpressionUUID->"7517892d-63b8-4137-9152-dc4d3f331a9a"]
+}, Open  ]]
+},
+WindowSize->{1077, 1033},
+WindowMargins->{{Automatic, -6}, {-7, Automatic}},
+Magnification:>1.2 Inherited,
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->"ReverseColor.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 8055, 192, 1800, "Input",ExpressionUUID->"b099122a-fe3c-4a78-bf5d-9e182641599e"],
+Cell[8616, 214, 1473, 33, 127, "Input",ExpressionUUID->"462069f7-b369-41d1-a4fd-a6b0541413f9"],
+Cell[CellGroupData[{
+Cell[10114, 251, 832, 16, 108, "Input",ExpressionUUID->"49787439-a09d-43a0-8125-cdb724422744"],
+Cell[10949, 269, 486, 8, 39, "Output",ExpressionUUID->"94ba1327-bebd-4400-b1ed-494227c42f33"],
+Cell[11438, 279, 489, 8, 39, "Output",ExpressionUUID->"296d9a6f-d191-4b56-9347-db165875e899"],
+Cell[11930, 289, 335, 6, 27, "Print",ExpressionUUID->"1c07dfc2-d71d-4f46-aee9-5f60a2225e51"]
+}, Open  ]],
+Cell[12280, 298, 688, 15, 79, "Input",ExpressionUUID->"693b0d4f-1d70-43cb-9d00-39ce7f860d4b"],
+Cell[CellGroupData[{
+Cell[12993, 317, 721, 14, 84, "Input",ExpressionUUID->"d2650a85-4acb-4a6e-b7e0-611cbcd49472"],
+Cell[13717, 333, 390, 7, 39, "Output",ExpressionUUID->"a9e3bc8d-cee0-4d21-807b-183509077c9b"],
+Cell[14110, 342, 373, 7, 27, "Print",ExpressionUUID->"7517892d-63b8-4137-9152-dc4d3f331a9a"]
+}, Open  ]]
+}
+]
+*)
+
