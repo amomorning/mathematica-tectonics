@@ -1,5 +1,5 @@
 # Introduction to AI for Architects
-
+[![View notebooks](https://wolfr.am/HAAhzkRq)](https://wolfr.am/R9t3nRdo)
 ## Notes
 
 ### 变量与函数
